@@ -1,0 +1,19 @@
+/*@font-face {
+    font-family: titleLogo;
+    src: url(../../fonts/title.ttf);
+}*/
+body{
+    background-color: #ffffff;
+}
+h1{
+    font-family: Helvetica;
+    font-size: 36px;
+    color: #000;
+    text-transform: capitalize;
+}
+.container{
+    background-color: #ffffff;
+}
+thead{
+    font-size: 24px;
+}

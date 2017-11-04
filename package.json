@@ -1,0 +1,11 @@
+{
+  "name": "Wedding",
+  "version": "0.0.1",
+  "description": "Marriage & Reception",
+  "author": "Venkat Nandhini",
+  "private": true,
+  "dependencies": {
+    "connect" : "3.5.0",
+    "serve-static" : "1.11.1"
+  }
+}
