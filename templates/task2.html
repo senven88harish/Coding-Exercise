@@ -1,5 +1,5 @@
 <lable>Number of Investors</lable>
-<input type="number" ng-model="investorsCount" name="investorCount" ng-change="addTemplate()" ng-pattern="/^[1-3]*$/" required>
+<input type="number" ng-model="investorsCount" name="investorCount" ng-change="addTemplate()" required>
 <br>
 <br>
 <form name="userForm" ng-submit="submitForm()" novalidate>
@@ -9,25 +9,25 @@
             <div class="panel-body">
                 <div class="form-inline">
                     <label>Percent</label>
-                    <input class="form-control text-input" id="percent_{{$index+1}}" type="text" ng-change="addSumPerc(this)" ng-pattern="/^[0-9]+[%]*$/" ng-model="displayInvestor.percent" required>
+                    <input class="form-control text-input" id="percent_{{$index+1}}" type="text" ng-change="addSumPerc('percent_{{$index+1}}')" ng-model="displayInvestor.percent"  ng-disabled="rejectEditing" required>
                 </div>
                 <div class="form-inline">
                     <label>Yield</label>
-                    <input class="form-control text-input" id="yield_{{$index+1}}" type="text"  ng-pattern="/^[0-9]+[%]*$/" ng-model="displayInvestor.yield" required>
+                    <input class="form-control text-input" id="yield_{{$index+1}}" type="text" ng-model="displayInvestor.yield" ng-disabled="rejectEditing" required>
                 </div>
                 <div class="form-inline">
                     <label>Interest Priority</label>
-                    <input class="form-control text-input" id="interest_{{$index+1}}" type="number" ng-change="addSequence(this)" ng-model="displayInvestor.interest_priority" ng-disabled="$first" value="{{displayInvestor.interest_priority}}" required>
+                    <input class="form-control text-input" id="interest_{{$index+1}}" type="number" ng-change="addSequence('interest_{{$index+1}}')" ng-model="displayInvestor.interest_priority" ng-disabled="$first || rejectEditing" value="{{displayInvestor.interest_priority}}" required>
                 </div>
                 <div class="form-inline">
                     <label>Principal Priority</label>
-                    <input class="form-control text-input" id="pricipal_{{$index+1}}" type="number" ng-change="addSequence(this)" ng-model="displayInvestor.principal_priority" value="{{displayInvestor.principal_priority}}" required>
+                    <input class="form-control text-input" id="pricipal_{{$index+1}}" type="number" ng-change="addSequence('pricipal_{{$index+1}}')" ng-model="displayInvestor.principal_priority" value="{{displayInvestor.principal_priority}}" ng-disabled="rejectEditing" required>
                 </div>
             </div>
         </div>
     </div>
     <div class="row nav-row">
-        <button type="submit" class="btn-success" ng-click="submitForm($valid)" ng-disabled="!$valid" ng-class="">Continue</button>
+        <button type="submit" class="btn-success" ng-click="submitForm($valid)"  ng-class="">Continue</button>
         <button type="button" class="btn-success">Abort</button>
     </div>
 </form>

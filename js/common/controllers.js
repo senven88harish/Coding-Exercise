@@ -41,6 +41,7 @@ codingExApp.controller('Task1Ctrl',['$scope', 'loanService', function($scope, lo
 
 
 codingExApp.controller('Task2Ctrl',['$scope', 'investorConst', function($scope, investorConst){
+    var sequenceVal = [1];
 
     $scope.addTemplate = function(){
         if($scope.investorsCount <= investorConst.INVESTOR_MAX ){
@@ -62,17 +63,33 @@ codingExApp.controller('Task2Ctrl',['$scope', 'investorConst', function($scope, 
         }
     };
 
-    $scope.addSumPerc = function(e){
-        console.log(e.displayInvestor.id);
-        if(e.displayInvestor.percent <= investorConst.PERCENTAGE){
-            console.log(e.displayInvestor.percent)
-        }else{
-            console.log("either its less than 0 or greater than "+investorConst.PERCENTAGE);
+    $scope.addSumPerc = function(id){
+        var selectedVal = angular.element('#'+id).val();
+        var percGivenId = [];
+        if(selectedVal <= investorConst.PERCENTAGE){
+            for(var i=0; i< $scope.investorCount.length;i++){
+                if(angular.element('#percent_'+(i+1)).val()){
+                    percGivenId.push(i+1);
+                    selectedVal+= parseInt(angular.element('#percent_'+id).val());
+                }
+            }
         }
+        console.log(percGivenId);
+        console.log(selectedVal)
     };
 
-    $scope.addSequence = function(e){
-        console.log(e);
+    $scope.addSequence = function(id){
+        var selectedVal = angular.element('#'+id).val();
+        var priorityValue = parseInt(selectedVal);
+        var maxAllowed = $scope.investorCount.length * 2;
+        if(sequenceVal.indexOf(priorityValue) > -1){
+            $scope.rejectEditing = true;
+        }else if((priorityValue >= 2) && (priorityValue <= maxAllowed) && sequenceVal.indexOf(priorityValue) === -1) {
+            sequenceVal.push(priorityValue);
+        }else if(priorityValue <= 0 || priorityValue > maxAllowed){
+            alert("please enter 2 to "+maxAllowed+" in the priority box");
+            angular.element('#'+id).val('')
+        }
     };
 
     $scope.submitForm = function(){
