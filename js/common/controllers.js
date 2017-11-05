@@ -63,52 +63,6 @@ codingExApp.controller('Task2Ctrl',['$scope', 'investorConst', function($scope, 
         }
     };
 
-    $scope.addSumPerc = function(id){
-        /*var selectedVal = angular.element('#'+id).val();
-        var total = 0;
-        var percGivenId = [];
-        var perNotGivenId = [];
-        if(selectedVal <= investorConst.PERCENTAGE) {
-          //  var equalPer = investorConst.PERCENTAGE - parseInt(selectedVal);
-            for(var i=0; i< $scope.investorCount.length;i++){
-                if(angular.element('#percent_'+(i+1)).val() && angular.element('#percent_'+(i+1)).val() >= 0 && angular.element('#percent_'+(i+1)).val() <= 100){
-                    percGivenId.push(i+1);
-                    total = parseInt(angular.element('#percent_'+(i+1)).val())+parseInt(total);
-                }else if(angular.element('#percent_'+(i+1)).val() === ''){
-                    perNotGivenId.push(i+1);
-                }
-            }
-        }else{
-            alert("Please enter 0 to 100");
-            angular.element('#'+id).val(0);
-        }
-        if(total >=0 && total<=100){
-            var equalPer = (investorConst.PERCENTAGE - total)/perNotGivenId.length;
-            console.log((investorConst.PERCENTAGE - total)/perNotGivenId.length);
-            for(var j=0; j< perNotGivenId.length; j++){
-                angular.element('#percent_'+perNotGivenId[j]).val(equalPer)
-            }
-        }else if(total < 0 || total > 100){
-            alert('please give proper value');
-            for(var k=0; k< perNotGivenId.length; k++){
-                angular.element('#percent_'+perNotGivenId[k]).val(0)
-            }
-        }
-        console.log(percGivenId);
-        console.log(perNotGivenId);
-        /*var percGivenId = [];
-        if(selectedVal <= investorConst.PERCENTAGE){
-            for(var i=0; i< $scope.investorCount.length;i++){
-                if(angular.element('#percent_'+(i+1)).val()){
-                    percGivenId.push(i+1);
-                    selectedVal = parseInt(angular.element('#percent_'+(i+1)).val())+selectedVal;
-                }
-            }
-        }
-        console.log(percGivenId);
-        console.log(selectedVal)*/
-    };
-
     $scope.addSequence = function(id){
         var selectedVal = angular.element('#'+id).val();
         var priorityValue = parseInt(selectedVal);
@@ -132,7 +86,7 @@ codingExApp.controller('Task2Ctrl',['$scope', 'investorConst', function($scope, 
             if(elemVal && elemVal > 0){
                 percGivenId.push(i+1);
                 total = elemVal+total;
-            }else if(!elemVal){
+            }else if(!elemVal || elemVal === 0){
                 perNotGivenId.push(i+1);
             }
         }
@@ -148,6 +102,8 @@ codingExApp.controller('Task2Ctrl',['$scope', 'investorConst', function($scope, 
                 angular.element('#percent_'+percGivenId[k]).val(0)
             }
         }
+
+        console.log($scope.investorCount);
     }
 
 }]);
