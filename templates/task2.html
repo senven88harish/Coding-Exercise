@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-inline">
                     <label>Yield</label>
-                    <input class="form-control text-input" id="yield_{{$index+1}}" type="text"  ng-model="displayInvestor.yield" ng-disabled="rejectEditing" required>
+                    <input class="form-control text-input" id="yield_{{$index+1}}" type="text"  ng-change="maxYield('yield_{{$index+1}}')" ng-model="displayInvestor.yield" ng-disabled="rejectEditing" required>
                 </div>
                 <div class="form-inline">
                     <label>Interest Priority</label>

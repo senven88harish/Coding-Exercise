@@ -63,6 +63,14 @@ codingExApp.controller('Task2Ctrl',['$scope', 'investorConst', function($scope, 
         }
     };
 
+    $scope.maxYield = function(id){
+        var selectedVal = angular.element('#'+id).val();
+        if(parseFloat(selectedVal) < 0 || parseFloat(selectedVal) > 100 ){
+            alert('Please enter 0% to 100% for yield');
+            angular.element('#'+id).val(0);
+        }
+    };
+
     $scope.addSequence = function(id){
         var selectedVal = angular.element('#'+id).val();
         var priorityValue = parseInt(selectedVal);
